@@ -105,16 +105,17 @@ public class Ejecutar {
                                                 min, costMin, meg, cosGi, des);
                                 plan4.calcularPagoMensual();
                                 System.out.println(plan4);
-                            } else {
-                                if (opc == 5) {
-                                    bandera = false;
-                                }
                             }
                         }
                     }
                 }
             } else {
-                System.out.println("Valor fuera del Rango Permitido");
+                if (opc == 5) {
+                    bandera = false;
+                } else {
+                    System.out.println("Valor fuera del Rango Permitido");
+                }
+
             }
         }
     }
