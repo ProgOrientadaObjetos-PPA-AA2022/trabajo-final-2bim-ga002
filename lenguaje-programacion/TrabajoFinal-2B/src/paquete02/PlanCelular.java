@@ -82,4 +82,20 @@ public abstract class PlanCelular {
         return pagoMensual;
     }
 
+    @Override
+    public String toString() {
+        String cadena = String.format("Nombre del Propietario: %s\n"
+                + "Cedula del Propietario: %s\n"
+                + "Ciudad del Propietario: %s\n"
+                + "Marca de Celular: %s\n"
+                + "Modelo del Celular: %s\n"
+                + "Numero de Celular: %s\n",
+                nombre,
+                cedula,
+                ciudad,
+                marca,
+                modelo,
+                numeroCelular);
+        return cadena;
+    }
 }
