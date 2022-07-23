@@ -8,14 +8,17 @@ package paquete02;
  *
  * @author Jonathan Coronel y Pablo Figeroa
  */
-public class PlanPostPagoMinutos {
+public class PlanPostPagoMinutos extends PlanCelular {
 
     private double minutosNacionales;
     private double costoMinutosNacionales;
     private double minutosInternacionales;
     private double costoMinutoInternacional;
 
-    public PlanPostPagoMinutos(double mN, double cmN, double mI, double cmI) {
+    public PlanPostPagoMinutos(String nom, String ced, String ciu, String mar,
+            String mod, String numeroCe, double mN, double cmN, double mI,
+            double cmI) {
+        super(nom, ced, ciu, mar, mod, numeroCe);
         minutosNacionales = mN;
         costoMinutosNacionales = cmN;
         minutosInternacionales = mI;
@@ -38,6 +41,12 @@ public class PlanPostPagoMinutos {
         costoMinutoInternacional = cmI;
     }
 
+    @Override
+    public void calcularPagoMensual() {
+        pagoMensual = (minutosNacionales * costoMinutosNacionales)
+                + (minutosInternacionales * costoMinutoInternacional);
+    }
+
     public double obtenerMinutosNacionales() {
         return minutosNacionales;
     }
@@ -56,15 +65,18 @@ public class PlanPostPagoMinutos {
 
     @Override
     public String toString() {
-        String data = String.format("Plan Post Pago Minutos\n"
-                + "Minutos: %.2f\n"
-                + "Costo Minutos: %.2f\n"
-                + "Megas en Gigas: %.2f\n"
-                + "Costo por Megas: %.2f\n",
+        String data = String.format("Plan Post Pago Minutos\n%s"
+                + "Minutos Nacionales: %.2f\n"
+                + "Costo Minutos Nacionales: $ %.2f\n"
+                + "Minutos Internacionales: %.2f\n"
+                + "Costo Minuto Internacional: $ %.2f\n"
+                + "Pago Mensual: $ %.2f\n",
+                super.toString(),
                 minutosNacionales,
                 costoMinutosNacionales,
                 minutosInternacionales,
-                costoMinutoInternacional);
+                costoMinutoInternacional,
+                pagoMensual);
         return data;
     }
 }

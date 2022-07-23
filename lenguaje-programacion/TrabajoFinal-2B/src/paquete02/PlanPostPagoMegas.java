@@ -11,15 +11,15 @@ package paquete02;
 public class PlanPostPagoMegas extends PlanCelular {
 
     private double megasGi;
-    private double costoMega;
+    private double costoGiga;
     private double tarifaBase;
 
     public PlanPostPagoMegas(String nom, String ced, String ciu, String mar,
-            String mod, String numeroCe, int megasG, double costoM,
+            String mod, String numeroCe, double megasG, double costoM,
             double tarifaB) {
         super(nom, ced, ciu, mar, mod, numeroCe);
-        megasGi = megasG;
-        costoMega = costoM;
+        establecerMegasGi(megasG);
+        costoGiga = costoM;
         tarifaBase = tarifaB;
     }
 
@@ -28,7 +28,7 @@ public class PlanPostPagoMegas extends PlanCelular {
     }
 
     public void establecerCostoMega(double costoM) {
-        costoMega = costoM;
+        costoGiga = costoM;
     }
 
     public void establecerTarifaBase(double tarifaB) {
@@ -37,7 +37,7 @@ public class PlanPostPagoMegas extends PlanCelular {
 
     @Override
     public void calcularPagoMensual() {
-        pagoMensual = (megasGi * costoMega) + tarifaBase;
+        pagoMensual = (megasGi * costoGiga) + tarifaBase;
     }
 
     public double obtenerMegasGi() {
@@ -45,7 +45,7 @@ public class PlanPostPagoMegas extends PlanCelular {
     }
 
     public double obtenerCostoMega() {
-        return costoMega;
+        return costoGiga;
     }
 
     public double obtenerTarifaBase() {
@@ -54,7 +54,16 @@ public class PlanPostPagoMegas extends PlanCelular {
 
     @Override
     public String toString() {
-        String cadena = String.format("PlanPostPagoMegas\n%s", super.toString());
+        String cadena = String.format("Plan Post Pago Megas\n"
+                + "%sMegas en Gigas: %.2f\n"
+                + "Costo por cada Giga: $ %.2f\n"
+                + "Tarifa Base: %.2f\n"
+                + "Pago Mensual: $ %.2f\n",
+                super.toString(),
+                megasGi,
+                costoGiga,
+                tarifaBase,
+                pagoMensual);
         return cadena;
     }
 }
