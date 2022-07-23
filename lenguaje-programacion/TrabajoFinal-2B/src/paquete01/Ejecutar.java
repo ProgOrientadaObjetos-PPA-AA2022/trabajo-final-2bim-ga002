@@ -6,7 +6,7 @@ package paquete01;
 
 /**
  *
- * @author 
+ * @author Jonathan Coronel y Pablo Figeroa
  */
 public class Ejecutar {
     public static void main(String[] args) {

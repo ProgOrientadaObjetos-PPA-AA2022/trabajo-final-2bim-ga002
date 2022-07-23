@@ -6,7 +6,7 @@ package paquete02;
 
 /**
  *
- * @author Jhona
+ * @author Jonathan Coronel y Pablo Figeroa
  */
 public class PlanPostPagoMinutosMegas {
     
