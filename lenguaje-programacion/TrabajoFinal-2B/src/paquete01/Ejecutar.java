@@ -10,6 +10,7 @@ import paquete02.PlanPostPagoMinutos;
 import paquete02.PlanPostPagoMegas;
 import paquete02.PlanPostPagoMinutosMegas;
 import paquete02.PlanPostPagoMinutosMegasEconomico;
+import paquete03.Enlace;
 
 /**
  *
@@ -22,12 +23,16 @@ public class Ejecutar {
         entrada.useLocale(Locale.US);
         boolean bandera = true;
         int opc;
+        Enlace c = new Enlace();
         while (bandera) {
-            System.out.printf("--------Menu Planes de Celular--------\n| 1 | "
-                    + "Plan Post Pago Minutos\n| 2 | Plan Post Pago Megas\n"
-                    + "| 3 | Plan Post Pago Minutos Megas\n| 4 |"
-                    + " Plan Post Pago Minutos Megas Economico\n"
-                    + "| 5 | Salir\n");
+            System.out.printf("------------Menu Planes de Celular------------\n"
+                    + "| 1 | Plan Post Pago Minutos\n"
+                    + "| 2 | Plan Post Pago Megas\n"
+                    + "| 3 | Plan Post Pago Minutos Megas\n"
+                    + "| 4 | Plan Post Pago Minutos Megas Economico\n"
+                    + "| 5 | Presentar Datos\n"
+                    + "| 6 | Salir\n"
+                    + "----------------------------------------------\n");
             opc = entrada.nextInt();
             if (opc >= 1 && opc <= 4) {
                 entrada.nextLine();
@@ -57,7 +62,8 @@ public class Ejecutar {
                                     numCel, minNa, cosMinNa, minInter,
                                     cosMinInter);
                     plan1.calcularPagoMensual();
-                    System.out.println(plan1);
+                    c.insertarPlanPostPagoMinutos(plan1);
+
                 } else {
                     if (opc == 2) {
                         System.out.println("Megas");
@@ -70,7 +76,7 @@ public class Ejecutar {
                                 = new PlanPostPagoMegas(nom, ced, ciu, mar, mod,
                                         numCel, meg, cosGi, tari);
                         plan2.calcularPagoMensual();
-                        System.out.println(plan2);
+                        c.insertarPlanPostPagoMegas(plan2);
                     } else {
                         if (opc == 3) {
                             System.out.println("Minutos");
@@ -86,7 +92,7 @@ public class Ejecutar {
                                             ciu, mar, mod, numCel, min, costMin,
                                             meg, cosGi);
                             plan3.calcularPagoMensual();
-                            System.out.println(plan3);
+                            c.insertarPlanPostPagoMinutosMegas(plan3);
                         } else {
                             if (opc == 4) {
                                 System.out.println("Minutos");
@@ -104,16 +110,24 @@ public class Ejecutar {
                                                 nom, ced, ciu, mar, mod, numCel,
                                                 min, costMin, meg, cosGi, des);
                                 plan4.calcularPagoMensual();
-                                System.out.println(plan4);
+                                c.insertarPlanPostPagoMinutosMegasEconomico(plan4);
                             }
                         }
                     }
                 }
             } else {
                 if (opc == 5) {
-                    bandera = false;
+                    System.out.print("\nInformacion de los Datos Guardados\n");
+                    for (int i = 0; i < c.obtenerDataPlanCelular().size(); i++) {
+                        System.out.printf("%s\n", c.obtenerDataPlanCelular().get(i));
+                    }
+
                 } else {
-                    System.out.println("Valor fuera del Rango Permitido");
+                    if (opc == 6) {
+                        bandera = false;
+                    } else {
+                        System.out.println("Valor fuera del Rango Permitido");
+                    }
                 }
 
             }

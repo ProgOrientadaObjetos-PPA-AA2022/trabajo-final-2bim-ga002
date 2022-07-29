@@ -11,6 +11,7 @@ package paquete02;
 public class PlanPostPagoMegas extends PlanCelular {
 
     private double megasGi;
+    private double gigas;
     private double costoGiga;
     private double tarifaBase;
 
@@ -23,8 +24,22 @@ public class PlanPostPagoMegas extends PlanCelular {
         tarifaBase = tarifaB;
     }
 
-    public void establecerMegasGi(double me) {
-        megasGi = me / 1064;
+    public PlanPostPagoMegas(String nom, String ced, String ciu,
+            String mar, String mod, String numeroCe, double gig, double costoG,
+            double tarifaB, double pagoMen) {
+        super(nom, ced, ciu, mar, mod, numeroCe);
+        gigas = gig;
+        costoGiga = costoG;
+        tarifaBase = tarifaB;
+        pagoMensual = pagoMen;
+    }
+
+    public void establecerMegasGi(double megasG) {
+        megasGi = megasG / 1024;
+    }
+
+    public void establecerGigas(double gi) {
+        gigas = gi;
     }
 
     public void establecerCostoMega(double costoM) {
@@ -44,6 +59,10 @@ public class PlanPostPagoMegas extends PlanCelular {
         return megasGi;
     }
 
+    public double obtenerGigas() {
+        return gigas;
+    }
+
     public double obtenerCostoMega() {
         return costoGiga;
     }
@@ -54,13 +73,13 @@ public class PlanPostPagoMegas extends PlanCelular {
 
     @Override
     public String toString() {
-        String cadena = String.format("Plan Post Pago Megas\n"
+        String cadena = String.format("\tPlan Post Pago Megas\n"
                 + "%sMegas en Gigas: %.2f\n"
                 + "Costo por cada Giga: $ %.2f\n"
                 + "Tarifa Base: %.2f\n"
                 + "Pago Mensual: $ %.2f\n",
                 super.toString(),
-                megasGi,
+                gigas,
                 costoGiga,
                 tarifaBase,
                 pagoMensual);

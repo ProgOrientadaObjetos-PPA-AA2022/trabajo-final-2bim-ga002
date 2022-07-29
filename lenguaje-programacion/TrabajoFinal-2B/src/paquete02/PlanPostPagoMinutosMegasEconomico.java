@@ -13,6 +13,7 @@ public class PlanPostPagoMinutosMegasEconomico extends PlanCelular {
     private double minutos;
     private double costoMinutos;
     private double megasEnGigas;
+    private double gigas;
     private double costoPorGiga;
     private double porcentajeDescuento;
 
@@ -27,6 +28,18 @@ public class PlanPostPagoMinutosMegasEconomico extends PlanCelular {
         porcentajeDescuento = pd;
     }
 
+    public PlanPostPagoMinutosMegasEconomico(String nom, String ced, String ciu,
+            String mar, String mod, String numeroCe, double m, double cm,
+            double gi, double cxg, double pd, double pagMen) {
+        super(nom, ced, ciu, mar, mod, numeroCe);
+        minutos = m;
+        costoMinutos = cm;
+        gigas = gi;
+        costoPorGiga = cxg;
+        porcentajeDescuento = pd;
+        pagoMensual = pagMen;
+    }
+
     public void establecerMinutos(double m) {
         minutos = m;
     }
@@ -36,7 +49,11 @@ public class PlanPostPagoMinutosMegasEconomico extends PlanCelular {
     }
 
     public void establecerMegasEnGigas(double mg) {
-        megasEnGigas = mg / 1064;
+        megasEnGigas = mg / 1024;
+    }
+
+    public void establecerGigas(double gi) {
+        gigas = gi;
     }
 
     public void establecerCostoPorGigas(double cxm) {
@@ -73,10 +90,14 @@ public class PlanPostPagoMinutosMegasEconomico extends PlanCelular {
         return porcentajeDescuento;
     }
 
+    public double obtenerGigas() {
+        return gigas;
+    }
+
     @Override
     public String toString() {
-        String data = String.format("Plan Post Pago Minutos Megas Economico\n%s"
-                + "Minutos: %.2f\n"
+        String data = String.format("\tPlan Post Pago Minutos Megas Economico\n"
+                + "%sMinutos: %.2f\n"
                 + "Costo Minutos: $%.2f\n"
                 + "Megas en Gigas: %.2f\n"
                 + "Costo por Megas: $%.2f\n"
@@ -85,7 +106,7 @@ public class PlanPostPagoMinutosMegasEconomico extends PlanCelular {
                 super.toString(),
                 minutos,
                 costoMinutos,
-                megasEnGigas,
+                gigas,
                 costoPorGiga,
                 porcentajeDescuento,
                 pagoMensual);

@@ -25,6 +25,17 @@ public class PlanPostPagoMinutos extends PlanCelular {
         costoMinutoInternacional = cmI;
     }
 
+    public PlanPostPagoMinutos(String nom, String ced, String ciu, String mar,
+            String mod, String numeroCe, double mN, double cmN, double mI,
+            double cmI, double pagoMensu) {
+        super(nom, ced, ciu, mar, mod, numeroCe);
+        minutosNacionales = mN;
+        costoMinutosNacionales = cmN;
+        minutosInternacionales = mI;
+        costoMinutoInternacional = cmI;
+        pagoMensual = pagoMensu;
+    }
+
     public void establecerMinutosNacionales(double mN) {
         minutosNacionales = mN;
     }
@@ -65,7 +76,7 @@ public class PlanPostPagoMinutos extends PlanCelular {
 
     @Override
     public String toString() {
-        String data = String.format("Plan Post Pago Minutos\n%s"
+        String data = String.format("\tPlan Post Pago Minutos\n%s"
                 + "Minutos Nacionales: %.2f\n"
                 + "Costo Minutos Nacionales: $ %.2f\n"
                 + "Minutos Internacionales: %.2f\n"
